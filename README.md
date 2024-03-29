@@ -29,10 +29,27 @@ The Poisson distribution is the discrete probability distribution of the number 
 ![image](https://user-images.githubusercontent.com/103921593/230282876-f4a5afbf-cac1-4648-a1b0-c78840638a8e.png)
 
 # Program :
+*/
+```
+import numpy as np
+from scipy.stats import poisson
+from scipy.optimize import curve_fit
 
- 
+# Example data: Number of objects arriving per minute
+arrivals_per_minute = [2, 4, 3, 5, 6, 2, 3, 4, 5, 2, 3, 4, 5]
 
+# Define the Poisson probability mass function
+def poisson_pmf(x, mu):
+    return poisson.pmf(x, mu)
+
+# Fit the Poisson distribution to the data
+mu, _ = curve_fit(poisson_pmf, np.arange(len(arrivals_per_minute)), arrivals_per_minute)
+
+print("Fitted Poisson Lambda (Mean):", mu[0])
+```
 # Output : 
+
+![Screenshot 2024-03-29 195102](https://github.com/Shubhavi17/Poisson_distribution/assets/150005085/a19e30e4-7b6d-4266-a8f1-91ab6ef87603)
 
 
 
